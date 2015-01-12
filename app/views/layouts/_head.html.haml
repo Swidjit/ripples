@@ -4,7 +4,7 @@
       %h1
         %a{:href => "#"}
           %i.fi-play
-          Good Luck
+          Ripples
     / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
     %li.toggle-topbar.menu-icon
       %a{:href => "#"}
@@ -12,14 +12,6 @@
   %section.top-bar-section
     -if user_signed_in?
       %ul.right
-        %li
-          .icon-bar.three-up{:style=>"display:block"}
-            %a.item
-              %i.fi-play
-            %a.item
-              %i.fi-crown
-            %a.item
-              %i.fi-torso-female
         %li.has-dropdown
           %a{:href => "#"} Username
           %ul.dropdown
@@ -29,6 +21,10 @@
               = link_to "Log out", destroy_session_path(:user), :method => :delete
     -else
       %ul.right
-        %li.active
-          =link_to "Login/Signup", new_user_session_path
+        %li.has-form{:style => 'padding-right: 3px !important;'}
+          =link_to new_user_session_path, :class=>'button header-button' do
+            Login
+        %li.has-form{:style => 'padding-right: 3px !important;'}
+          =link_to  new_user_registration_path, :class=>'button header-button' do
+            Register
 
