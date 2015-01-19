@@ -15,5 +15,13 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
-
+$(document).on('ready', function() {
+	if ($.cookie('referring_post_id')==undefined) {
+		var id = 123456;
+		$.cookie('referring_post_id', id, { expires: 1 });
+	}
+	else console.log($.cookie('referring_post_id'));
+});
 $(function(){ $(document).foundation(); });
+
+

@@ -2,6 +2,7 @@
   %h2 Sign up
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
+    = f.hidden_field :referring_post_id, :value=> "", :id => "referring-post-id"
     %div
       = f.label :email
       %br/
@@ -17,3 +18,10 @@
       = f.password_field :password_confirmation, autocomplete: "off"
     %div= f.submit "Sign up"
   = render "devise/shared/links"
+
+:javascript
+  $(document).on('ready', function() {
+    if ($.cookie('referring_post_id')!=undefined) {
+      $('#referring-post-id').val($.cookie("referring_post_id"));
+    }
+  });

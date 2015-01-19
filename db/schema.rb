@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119005737) do
+ActiveRecord::Schema.define(version: 20150119014519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150119005737) do
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
-    t.string   "type"
+    t.string   "content_type"
     t.string   "content"
     t.float    "points"
     t.datetime "created_at"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20150119005737) do
   create_table "relationships", force: true do |t|
     t.integer "parent_id"
     t.integer "child_id"
-    t.integer "referring_post_id"
   end
 
   create_table "users", force: true do |t|
@@ -54,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150119005737) do
     t.string   "first_name"
     t.string   "username"
     t.string   "about"
+    t.integer  "referring_post_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
