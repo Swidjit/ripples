@@ -3,6 +3,12 @@
   =f.file_field :photo
   =f.hidden_field :content_type, :value => "text"
   =f.submit "submit"
+
+=form_for Video.new do |f|
+  =f.text_area :content
+  =f.file_field :video
+  =f.hidden_field :content_type, :value => "text"
+  =f.submit "submit"
 #feed
 .row
   .large-12.columns
