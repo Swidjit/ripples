@@ -1,0 +1,9 @@
+=content_for :head do
+  %meta{:content => "Ripples", :property => "og:title"}
+
+=@post.content
+
+%p share url:
+-@url= "http://ripplxz.herokuapp.com/posts/#{@post.id}?referrer=#{@post.id}"
+
+.fb-share-button{"data-href" => @url, "data-layout" => "button"}
