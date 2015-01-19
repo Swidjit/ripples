@@ -16,12 +16,24 @@
 //= require turbolinks
 //= require_tree .
 $(document).on('ready', function() {
-	if ($.cookie('referring_post_id')==undefined) {
-		var id = 123456;
-		$.cookie('referring_post_id', id, { expires: 1 });
+	referrer_id = getUrlParameter('referrer');
+	if (referrer_id != undefined) {
+		$.cookie('referring_post_id', referrer_id, { expires: 1 });
 	}
 	else console.log($.cookie('referring_post_id'));
 });
 $(function(){ $(document).foundation(); });
 
-
+function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam)
+        {
+            return sParameterName[1];
+        }
+    }
+}
