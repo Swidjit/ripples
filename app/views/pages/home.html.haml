@@ -1,3 +1,8 @@
+=form_for Post.new, :remote=>:true do |f|
+  =f.text_area :content
+  =f.hidden_field :content_type, :value => "text"
+  =f.submit "submit"
+#feed
 .row
   .large-12.columns
     %h3 In order to solve the pressing issues of our time, we are going to need all hands on deck.  Slowing climate change, achieving social justice and reaching gender equality will require global efforts on an unprecedented scale.  We need hundreds of millions of organizers and leaders to inspire billions of us to follow.
