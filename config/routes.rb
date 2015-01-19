@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     :controllers => { :registrations => "registrations" }
 
   resources :posts
-
+  resources :images
   root :to => 'pages#home'
   get 'pages/:page_name' => 'pages#index', :as => :pages
 end

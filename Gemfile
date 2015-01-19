@@ -6,6 +6,9 @@ gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 
+gem 'paperclip'
+gem 'aws-sdk'
+
 gem 'haml-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

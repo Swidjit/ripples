@@ -2,6 +2,7 @@
   %meta{:content => "Ripples", :property => "og:title"}
 
 =@post.content
+= image_tag @post.photo.url(:square)
 
 %p share url:
 -@url= "http://ripplz.herokuapp.com/posts/#{@post.id}?referrer=#{@post.id}"
