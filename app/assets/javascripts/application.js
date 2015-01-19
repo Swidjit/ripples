@@ -21,6 +21,7 @@ $(document).on('ready', function() {
 		$.cookie('referring_post_id', referrer_id, { expires: 1 });
 	}
 	else console.log($.cookie('referring_post_id'));
+
 });
 $(function(){ $(document).foundation(); });
 
