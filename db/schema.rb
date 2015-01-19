@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105201117) do
+ActiveRecord::Schema.define(version: 20150119003957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "points", force: true do |t|
+    t.float   "points"
+    t.integer "user_id"
+  end
+
+  add_index "points", ["user_id"], name: "index_points_on_user_id", using: :btree
+
+  create_table "relationships", force: true do |t|
+    t.integer "parent_id"
+    t.integer "child_id"
+    t.integer "referring_post_id"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
