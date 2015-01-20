@@ -1,7 +1,7 @@
-class VideosController < PostsController
+class ImagesController < PostsController
 
   def create
-    @post = Video.new(friend_params)
+    @post = Image.new(friend_params)
     puts @post
     if @post.save
       redirect_to @post, notice: 'Friend was successfully created.'
@@ -11,12 +11,12 @@ class VideosController < PostsController
   end
 
   def show
-    @post = Video.find(params[:id])
+    @post = Image.find(params[:id])
   end
 
   private
 
   def friend_params
-    params.require(:video).permit(:video, :name)
+    params.require(:image).permit(:photo, :name)
   end
 end

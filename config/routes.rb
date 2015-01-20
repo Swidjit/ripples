@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :images
   resources :videos
   root :to => 'pages#home'
-  get 'pages/:page_name' => 'pages#index', :as => :pages
+  get '/:display_name' => 'users#show', :as => :profile
+
 end
