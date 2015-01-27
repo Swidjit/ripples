@@ -1,4 +1,4 @@
-class Video < Post
+class Video < ActiveRecord::Base
   # This method associates the attribute ":photo" with a file attachment
   has_attached_file :video,
     :storage => :s3,
@@ -10,5 +10,6 @@ class Video < Post
      :content_type => ['video/mp4'],
      :message => "Sorry, this site currently only supports MP4 video"
 
+  belongs_to :post
 
 end

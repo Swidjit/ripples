@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119154833) do
+ActiveRecord::Schema.define(version: 20150127144608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,19 +25,12 @@ ActiveRecord::Schema.define(version: 20150119154833) do
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
-    t.string   "content_type"
-    t.string   "content"
-    t.float    "points"
+    t.string   "resource_type"
+    t.string   "resource_id"
+    t.float    "points",        default: 0.0
+    t.integer  "votes",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.string   "video_file_name"
-    t.string   "video_content_type"
-    t.integer  "video_file_size"
-    t.datetime "video_updated_at"
   end
 
   create_table "relationships", force: true do |t|
@@ -66,5 +59,14 @@ ActiveRecord::Schema.define(version: 20150119154833) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "videos", force: true do |t|
+    t.string   "description"
+    t.integer  "post_id"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
+  end
 
 end

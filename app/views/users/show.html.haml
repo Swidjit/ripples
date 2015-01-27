@@ -18,10 +18,19 @@
         917
 
   .large-9.columns
-    =@user.username
+    %a{"data-reveal-id" => "new-post", :href => "#"} post a video
+    %br
     -@posts.each do |post|
-      -case post.content_type
-        -when "text"
-          =render :partial=>'posts/text', :locals => {post:post}
+      -case post.resource_type
+        -when "video"
+          =render :partial=>'posts/video', :locals => {post:post}
 
+#new-post.reveal-modal{"data-reveal" => ""}
+  %h3 post a video
+  %p Just a quick question first:  Would you like to proceed as a guest, or login to your FLCF account.  Using a FLCF account will allow you to save and reuse your offsets.
+  =form_for Video.new do |f|
+    =f.text_area :description
+    =f.file_field :video
+    =f.submit "submit", :class => "button"
 
+  %a.close-reveal-modal ×

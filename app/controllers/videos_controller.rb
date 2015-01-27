@@ -1,12 +1,15 @@
-class ImagesController < PostsController
+class VideosController < PostsController
 
   def create
-    @post = Image.new(friend_params)
-    puts @post
-    if @post.save
-      redirect_to @post, notice: 'Friend was successfully created.'
-     else
-       render action: 'new'
+    @post = Post.new(:resource_type=>"video", :user_id=>14)
+
+    video_params[:post_id] = @post.id
+    video_params[:post_id] = @post.id
+    @video = Video.new(video_params)
+    @post.resource_id = @video.id
+    @post.save
+    if @video.save
+      redirect_to root_path
     end
   end
 
@@ -16,7 +19,7 @@ class ImagesController < PostsController
 
   private
 
-  def friend_params
-    params.require(:image).permit(:photo, :name)
+  def video_params
+    params.require(:video).permit(:video, :description)
   end
 end

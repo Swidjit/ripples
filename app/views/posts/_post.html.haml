@@ -1,1 +1,3 @@
-=post.content
+-case post.resource_type
+  -when 'video'
+    =render :partial => 'posts/video', :locals => {post: post}
