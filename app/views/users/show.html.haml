@@ -22,6 +22,10 @@
     %br
     %a{"data-reveal-id" => "new-image", :href => "#"} post an image
     %br
+    %a{"data-reveal-id" => "new-quote", :href => "#"} post a quote
+    %br
+    %a{"data-reveal-id" => "new-text", :href => "#"} post a text
+    %br
     -@posts.each do |post|
       .feed-post
         -case post.resource_type
@@ -29,6 +33,10 @@
             =render :partial=>'posts/video', :locals => {post:post}
           -when "image"
             =render :partial=>'posts/image', :locals => {post:post}
+          -when "quote"
+            =render :partial=>'posts/quote', :locals => {post:post}
+          -when "prose"
+            =render :partial=>'posts/prose', :locals => {post:post}
 #new-video.reveal-modal{"data-reveal" => ""}
   %h3 post a video
   %p Just a quick question first:  Would you like to proceed as a guest, or login to your FLCF account.  Using a FLCF account will allow you to save and reuse your offsets.
@@ -45,6 +53,19 @@
   =form_for Image.new do |f|
     =f.text_area :description
     =f.file_field :image
+    =f.submit "submit", :class => "button"
+
+#new-quote.reveal-modal{"data-reveal" => ""}
+  %h3 post a quote
+  =form_for Quote.new do |f|
+    =f.text_area :text
+    =f.text_field :author
+    =f.submit "submit", :class => "button"
+
+#new-text.reveal-modal{"data-reveal" => ""}
+  %h3 post a quote
+  =form_for Prose.new do |f|
+    =f.text_area :text
     =f.submit "submit", :class => "button"
 
   %a.close-reveal-modal ×
