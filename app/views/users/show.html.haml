@@ -18,25 +18,24 @@
         917
 
   .large-9.columns
-    %a{"data-reveal-id" => "new-video", :href => "#"} post a video
+    %button{"data-post-type" => "prose", :class=>"post-button"} post some prose
+    %button{"data-post-type" => "quote", :class=>"post-button"} post a quote
+    %button{"data-post-type" => "video", :class=>"post-button"} post a video
+    %button{"data-post-type" => "image", :class=>"post-button"} post an image
+    %button{"data-post-type" => "link", :class=>"post-button"} post a link
     %br
-    %a{"data-reveal-id" => "new-image", :href => "#"} post an image
-    %br
-    %a{"data-reveal-id" => "new-quote", :href => "#"} post a quote
-    %br
-    %a{"data-reveal-id" => "new-text", :href => "#"} post a text
-    %br
-    -@posts.each do |post|
-      .feed-post
-        -case post.resource_type
-          -when "video"
-            =render :partial=>'posts/video', :locals => {post:post}
-          -when "image"
-            =render :partial=>'posts/image', :locals => {post:post}
-          -when "quote"
-            =render :partial=>'posts/quote', :locals => {post:post}
-          -when "prose"
-            =render :partial=>'posts/prose', :locals => {post:post}
+    #feed
+      -@posts.each do |post|
+        .feed-post
+          -case post.resource_type
+            -when "video"
+              =render :partial=>'posts/video', :locals => {post:post}
+            -when "image"
+              =render :partial=>'posts/image', :locals => {post:post}
+            -when "quote"
+              =render :partial=>'posts/quote', :locals => {post:post}
+            -when "prose"
+              =render :partial=>'posts/prose', :locals => {post:post}
 #new-video.reveal-modal{"data-reveal" => ""}
   %h3 post a video
   %p Just a quick question first:  Would you like to proceed as a guest, or login to your FLCF account.  Using a FLCF account will allow you to save and reuse your offsets.
@@ -62,10 +61,35 @@
     =f.text_field :author
     =f.submit "submit", :class => "button"
 
-#new-text.reveal-modal{"data-reveal" => ""}
-  %h3 post a quote
-  =form_for Prose.new do |f|
-    =f.text_area :text
-    =f.submit "submit", :class => "button"
+#new-post.reveal-modal{"data-reveal" => ""}
+
+
+  #form
+
 
   %a.close-reveal-modal ×
+
+:javascript
+
+  $('.post-button').on("click", function() {
+    console.log($(this).data("post-type"));
+    switch($(this).data("post-type")) {
+      case "prose":
+        $('#form').html("#{escape_javascript render :partial => 'posts/prose_form'}");
+        break;
+      case "video":
+        $('#form').html("#{escape_javascript render :partial => 'posts/video_form'}");
+        break;
+      case "quote":
+        $('#form').html("#{escape_javascript render :partial => 'posts/quote_form'}");
+        break;
+      case "image":
+        $('#form').html("#{escape_javascript render :partial => 'posts/image_form'}");
+        break;
+
+    }
+
+
+    $('#new-post').foundation('reveal', 'open');
+  });
+

@@ -6,14 +6,15 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    if @post.save
-      render :partial => 'create.js'
+
+    respond_with do |format|
+      format.js {render 'create'}
     end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:content_type, :content)
+    params.require(:post).permit(:user_id, :resource_type, :tag_list, video_attributes: [:video, :description], image_attributes: [:image], prose_attributes: [:text], quote_attributes: [:text, :author])
   end
 end

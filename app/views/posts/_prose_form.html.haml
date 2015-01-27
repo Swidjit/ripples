@@ -1,0 +1,9 @@
+=form_for @post, url: posts_path, :id =>"post-form", :remote=>:true do |f|
+  =f.hidden_field :resource_type, :value=>'prose'
+  =f.hidden_field :user_id, :value=>14
+  =f.fields_for :prose do |f1|
+    =f1.text_field :text
+  =f.label :tags
+  =f.text_field :tag_list
+  =f.submit "submit"
+

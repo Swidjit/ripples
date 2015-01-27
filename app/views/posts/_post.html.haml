@@ -1,3 +1,9 @@
 -case post.resource_type
   -when 'video'
     =render :partial => 'posts/video', :locals => {post: post}
+  -when 'prose'
+    =render :partial => 'posts/prose', :locals => {post: post}
+  -when 'image'
+    =render :partial => 'posts/image', :locals => {post: post}
+  -when 'quote'
+    =render :partial => 'posts/quote', :locals => {post: post}

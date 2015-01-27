@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     @user = User.where(:username=>params[:display_name]).first
     @posts = @user.posts
 
+    @post = Post.new
+    @post.prose = Prose.new
+    @post.quote = Quote.new
+    @post.image = Image.new
+    @post.video = Video.new
+
+
   end
 
   private

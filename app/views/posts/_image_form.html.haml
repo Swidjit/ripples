@@ -1,0 +1,13 @@
+%h4 post a quote
+=form_for @post, url: posts_path, :id =>"post-form" do |f|
+  =f.hidden_field :resource_type, :value=>'quote'
+
+  =f.hidden_field :user_id, :value=>14
+  =f.fields_for :quote do |f1|
+    =f1.label :quote
+    =f1.text_field :text
+    =f1.label :author
+    =f1.text_field :author
+  =f.label :tags
+  =f.text_field :tag_list
+  =f.submit "submit quote"

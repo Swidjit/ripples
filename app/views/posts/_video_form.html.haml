@@ -1,0 +1,12 @@
+=form_for @post, url: posts_path, :id =>"post-form" do |f|
+  =f.hidden_field :resource_type, :value=>'video'
+  =f.hidden_field :user_id, :value=>14
+  =f.fields_for :video do |f1|
+    =f1.label :video
+    =f1.file_field :video
+    =f1.label :description
+    =f1.text_area :description
+
+  =f.label :tags
+  =f.text_field :tag_list
+  =f.submit "submit"
