@@ -16,8 +16,6 @@
     =render :partial => 'layouts/facebook'
 
   %body
-    =render :partial => 'layouts/head'
-    %p.notice= notice
-    %p.alert= alert
+    =render :partial => 'layouts/top_bar'
     = yield
     =render :partial => 'layouts/footer'

@@ -30,6 +30,16 @@
 	padding-left: .5em;
 }
 
+button.home {
+  width: 100%;
+  margin: 1px;
+  text-align: right;
+  i {
+    margin-left: 6px;
+  }
+  background-color:#033649;
+}
+
 .title {
   background-color: #036564;
   height: 50px;
