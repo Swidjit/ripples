@@ -1,3 +1,7 @@
 =@user.username
+-@posts.each do |post|
+  -case post.content_type
+    -when "text"
+      =render :partial=>'posts/text', :locals => {post:post}
 
 

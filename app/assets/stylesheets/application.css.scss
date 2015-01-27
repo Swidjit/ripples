@@ -29,3 +29,41 @@
 	top: -.5em;
 	padding-left: .5em;
 }
+
+.title {
+  background-color: #036564;
+  height: 50px;
+
+  i {
+    display:inline;
+    font-size: 35px;
+    color: #021533;
+
+  }
+  h2 {
+    display:inline;
+    margin: 0 0 0 15px;
+    line-height: 45px;
+    padding:0px;
+    color: #E7DDCB;
+    font-size: 32px;
+    vertical-align: top;
+  }
+
+}
+
+.login-button {
+  background-color: #033649;
+  min-height: 50px;
+  font-size: 23px;
+  line-height:45px;
+  text-align:center;
+  a {
+    color: #E7DDCB;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+.login-button:hover {
+  background-color: #c3f;
+}

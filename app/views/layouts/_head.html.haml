@@ -1,30 +1,11 @@
-%nav.top-bar{"data-topbar" => "", :role => "navigation"}
-  %ul.title-area
-    %li.name
-      %h1
-        %a{:href => "#"}
-          %i.fi-play
-          Ripples
-    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
-    %li.toggle-topbar.menu-icon
-      %a{:href => "#"}
-        %span Menu
-  %section.top-bar-section
-    -if user_signed_in?
-      %ul.right
-        %li.has-dropdown
-          %a{:href => "#"} Username
-          %ul.dropdown
-            %li
-              %a{:href => "#"} Account Settings
-            %li.active
-              = link_to "Log out", destroy_session_path(:user), :method => :delete
-    -else
-      %ul.right
-        %li.has-form{:style => 'padding-right: 3px !important;'}
-          =link_to new_user_session_path, :class=>'button header-button' do
-            Login
-        %li.has-form{:style => 'padding-right: 3px !important;'}
-          =link_to  new_user_registration_path, :class=>'button header-button' do
-            Register
+.row
+  .large-10.medium-9.small-7.columns.title
+    %i.fi-list
+    %h2 ripplz
+
+  .large-2.medium-3.small-5.columns.login-button
+    =link_to new_user_session_path do
+      Join
+      %i.fi-arrow-right
+
 
