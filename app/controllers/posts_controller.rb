@@ -12,6 +12,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      respond_with do |format|
+        format.js {render 'destroy', :locals=>{id:@post.id}}
+      end
+    end
+  end
+
   private
 
   def post_params

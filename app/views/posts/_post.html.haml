@@ -7,3 +7,5 @@
     =render :partial => 'posts/image', :locals => {post: post}
   -when 'quote'
     =render :partial => 'posts/quote', :locals => {post: post}
+=link_to post_path(post.id), :method=>:delete, :remote=>:true do
+  .delete delete
