@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :votes
+  has_many :points
 
   attr_accessor :login
 
@@ -13,6 +14,8 @@ class User < ActiveRecord::Base
   :uniqueness => {
     :case_sensitive => false
   }
+
+  scope :top_players, ->{ User.joins(:points).merge(Point.leaders)}
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

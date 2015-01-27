@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @top_users = User.all
+    @top_users = User.top_players
     @top_posts = Post.popular.all
   end
 
