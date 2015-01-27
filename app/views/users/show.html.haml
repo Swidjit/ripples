@@ -1,7 +1,27 @@
-=@user.username
--@posts.each do |post|
-  -case post.content_type
-    -when "text"
-      =render :partial=>'posts/text', :locals => {post:post}
+.row
+  .large-3.columns.spaceless{:style=>"background-color:#E8DDCB;"}
+    .row.spaceless
+      #profile-logo.large-12.columns.spaceless
+        %h5=@user.username
+    .row.spaceless
+      .large-6.columns.spaceless
+        #follow.button-box
+          follow
+      .large-6.columns.spaceless
+        #message.button-box
+          message
+    %div{:style=>"height:10px;"}
+    .row.spaceless
+      .large-9.columns.lighter-blue
+        total points
+      .large-3.columns.light-blue
+        917
+
+  .large-9.columns
+    =@user.username
+    -@posts.each do |post|
+      -case post.content_type
+        -when "text"
+          =render :partial=>'posts/text', :locals => {post:post}
 
 

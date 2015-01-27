@@ -17,7 +17,9 @@
  */
 
 @import 'foundation-icons';
-
+body {
+  font-family: "Gill Sans";
+}
 .button-icon {
 	font-size: 3em;
 }
@@ -76,4 +78,49 @@ button.home {
 }
 .login-button:hover {
   background-color: #c3f;
+}
+
+/* user css */
+
+#profile-logo {
+  background-color: #021533;
+  h5 {
+    text-align:center;
+    vertical-align:bottom;
+    color: #E7DDCB;
+  }
+  min-height: 80px;
+}
+#message, #follow {
+  background-color: #ccc;
+  text-align:center;
+  min-height: 30px;
+  font-weight: bold;
+  color: #E7DDCB;
+  border: 1px solid white;
+}
+#message {
+  background-color:#033649;
+}
+#follow {
+  background-color:#036564;
+}
+.button-box {
+  padding: 0px;
+  background-color: #f0f;
+}
+.button-box:hover {
+  background-color: #c0c !important;
+}
+.spaceless {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.light-blue {
+  background-color:#555d6a;
+  color: #E7DDCB;
+}
+.lighter-blue {
+  background-color:#202f47;
+  color: #E7DDCB;
 }
