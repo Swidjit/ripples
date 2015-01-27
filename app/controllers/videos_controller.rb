@@ -1,9 +1,8 @@
-class VideosController < PostsController
+class VideosController < ApplicationController
 
   def create
     @post = Post.new(:resource_type=>"video", :user_id=>14)
 
-    video_params[:post_id] = @post.id
     video_params[:post_id] = @post.id
     @video = Video.new(video_params)
     @post.resource_id = @video.id

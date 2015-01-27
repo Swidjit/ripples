@@ -1,12 +1,12 @@
-class ImagesController < PostsController
+class ImagesController < ApplicationController
 
   def create
-    @post = Image.new(friend_params)
-    puts @post
-    if @post.save
-      redirect_to @post, notice: 'Friend was successfully created.'
-     else
-       render action: 'new'
+    @post = Post.new(:resource_type=>"image", :user_id=>14)
+    @post.save
+    @image = Image.new(image_params)
+    @image.post_id = @post.id
+    if @image.save
+      redirect_to root_path
     end
   end
 
@@ -16,7 +16,7 @@ class ImagesController < PostsController
 
   private
 
-  def friend_params
-    params.require(:image).permit(:photo, :name)
+  def image_params
+    params.require(:image).permit(:image, :description)
   end
 end

@@ -18,19 +18,33 @@
         917
 
   .large-9.columns
-    %a{"data-reveal-id" => "new-post", :href => "#"} post a video
+    %a{"data-reveal-id" => "new-video", :href => "#"} post a video
+    %br
+    %a{"data-reveal-id" => "new-image", :href => "#"} post an image
     %br
     -@posts.each do |post|
-      -case post.resource_type
-        -when "video"
-          =render :partial=>'posts/video', :locals => {post:post}
-
-#new-post.reveal-modal{"data-reveal" => ""}
+      .feed-post
+        -case post.resource_type
+          -when "video"
+            =render :partial=>'posts/video', :locals => {post:post}
+          -when "image"
+            =render :partial=>'posts/image', :locals => {post:post}
+#new-video.reveal-modal{"data-reveal" => ""}
   %h3 post a video
   %p Just a quick question first:  Would you like to proceed as a guest, or login to your FLCF account.  Using a FLCF account will allow you to save and reuse your offsets.
   =form_for Video.new do |f|
     =f.text_area :description
     =f.file_field :video
+    =f.submit "submit", :class => "button"
+
+  %a.close-reveal-modal ×
+
+#new-image.reveal-modal{"data-reveal" => ""}
+  %h3 post a video
+  %p Just a quick question first:  Would you like to proceed as a guest, or login to your FLCF account.  Using a FLCF account will allow you to save and reuse your offsets.
+  =form_for Image.new do |f|
+    =f.text_area :description
+    =f.file_field :image
     =f.submit "submit", :class => "button"
 
   %a.close-reveal-modal ×
